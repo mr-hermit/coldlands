@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <div class="blog-header">
+    <h1 class="blog-title">Welcome to my BLOG</h1>
+    <p class="lead blog-description">Here supposed to be some description</p>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <!-- Main block -->
+    <div class="col-sm-8 blog-main">
+    
+      <!-- Post -->
+      {% if posts %}
+        {% for post in posts %}
+          <div class="blog-bost">
+            <h2 class="blog-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+            <p class="blog-post-meta">
+              {{ post.posted }}
+            </p>        
+            <p>{% autoescape off %}
+            {{ post.text | safe }}
+            {% endautoescape %}</p>
+          </div>   
+        {% endfor %}
+      {% else %}
+        <div class="alert alert-info" role="alert">There are no posts was found.</div>      
+      {% endif %}
+ 
+    </div>
+    
+    <!-- Side bar -->
+    <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+      <div class="sidebar-module sidebar-module-inset">
+        <h4>Title</h4>
+        <p>Content</p>
+      </div>
+      <div class="sidebar-module">
+        <h4>Archives</h4>
+        <ol class="list-unstyled">
+          <li><a href="#">...</a>
+        </ol>
+      </div>
+    </div>
+  </div>
+{% endblock %}
