@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
+{% load truncate_until %}
+
 {% block title %}
   <div class="blog-header">
-    <h1 class="blog-title">Welcome to my BLOG</h1>
+    <h1 class="blog-title">Welcome </h1>
     <p class="lead blog-description">Here supposed to be some description</p>
   </div>
 {% endblock %}
@@ -20,9 +22,9 @@
             <p class="blog-post-meta">
               {{ post.posted }}
             </p>        
-            <p>{% autoescape off %}
-            {{ post.text | safe }}
-            {% endautoescape %}</p>
+            <p>
+            {{ post.text | truncate_until | safe| linebreaks }}
+            </p>
           </div>   
         {% endfor %}
       {% else %}
