@@ -24,7 +24,7 @@ class Post(models.Model):
     text = models.TextField()
     posted = models.DateField(db_index=True, auto_now_add=True)
     category = models.ForeignKey('Category')
-    tag = models.ManyToManyField('Tag')
+#    tag = models.ManyToManyField('Tag', null=True)
     
     def __unicode__(self):
         return '%s' % self.title
@@ -32,6 +32,9 @@ class Post(models.Model):
     @permalink
     def get_absolute_url(self):
         return ('post', None, {'postid': str(self.postid)})
+    
+    class Meta:
+        ordering = ['posted']
 
 class Category(models.Model):
     catid = UUIDField(primary_key=True, editable=False)
@@ -42,7 +45,7 @@ class Category(models.Model):
     
     @permalink
     def get_absolute_url(self):
-        return ('filter', None, {'catid': self.catid})
+        return ('category', None, {'catid': self.catid})
     
 class Tag(models.Model):
     tagid = UUIDField(primary_key=True, editable=False)
