@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load truncate_until %}
+{% load get_object_url %}
 
 {% block title %}
   <div class="blog-header">
@@ -14,22 +15,25 @@
     <!-- Main block -->
     <div class="col-sm-8 blog-main">
     
-      <!-- Post -->
-      {% if posts %}
-        {% for post in posts %}
-          <div class="blog-bost">
-            <h2 class="blog-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-            <p class="blog-post-meta">
-              {{ post.posted }}
-            </p>        
-            <p>
-            {{ post.text | truncate_until:"%endpreview%" | safe| linebreaks }}
-            </p>
-          </div>   
-        {% endfor %}
-      {% else %}
-        <div class="alert alert-info" role="alert">There are no posts was found.</div>      
-      {% endif %}
+      {% block posts %}
+      
+        {% if posts %}
+          {% for post in posts %}
+            <div class="blog-post">
+              <h2 class="blog-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+              <p class="blog-post-meta">
+                {{ post.posted }} | <a href="{{ post.category | get_object_url }}">{{ post.category }}</a>
+              </p>        
+              <p>
+              {{ post.text | truncate_until:"%endpreview%" | safe| linebreaks }}
+              </p>
+            </div>   
+          {% endfor %}
+        {% else %}
+          <div class="alert alert-info" role="alert">There are no posts was found.</div>      
+        {% endif %}
+      
+      {% endblock %}
  
     </div>
     
