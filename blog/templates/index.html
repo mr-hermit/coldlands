@@ -23,7 +23,7 @@
               {{ post.posted }}
             </p>        
             <p>
-            {{ post.text | truncate_until | safe| linebreaks }}
+            {{ post.text | truncate_until:"%endpreview%" | safe| linebreaks }}
             </p>
           </div>   
         {% endfor %}

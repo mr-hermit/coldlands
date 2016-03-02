@@ -11,5 +11,5 @@ register = template.Library()
 
 @register.filter('truncate_until')
 @stringfilter
-def truncate_until(value):
-    return(value.split('<p>')[0])
+def truncate_until(value,arg):
+    return(value.split(arg)[0])
