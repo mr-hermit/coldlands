@@ -1,0 +1,39 @@
+
+
+Requred modules
+---------------
+
+	* psycopg2
+	* django-bootstrap3
+
+
+Blog (module)
+-------------
+
+Functionality:
+
+	* Articles 
+	* By default articles sorted in order "newest first". This might be different depends on category option and should be 
+	* Articles that were created since users last visit marks "new" tag (Bootstrap label "default" or "primary" class)
+
+Menu (module)
+-------------
+Allow to automaticaly build menu
+
+Functionality:
+	*   
+	
+	
+Dogs (module)
+-------------
+
+Menu Structure (sample for coldlands.org):
+
+	* (top level)
+	|- Malamutes
+	|-- Our Dogs
+	|-- Articles
+	|--- About the breed
+	|--- 
+	
+

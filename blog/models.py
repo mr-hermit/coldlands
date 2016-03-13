@@ -25,6 +25,8 @@ class Post(models.Model):
     posted = models.DateField(db_index=True, auto_now_add=True)
     category = models.ForeignKey('Category')
 #    tag = models.ManyToManyField('Tag', null=True)
+    auth = models.BooleanField(default = False)
+    private = models.BooleanField(default = False)
     
     def __unicode__(self):
         return '%s' % self.title
