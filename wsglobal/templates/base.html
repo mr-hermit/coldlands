@@ -9,9 +9,11 @@
 <html>
     <head>
         <title>{% block head_title %}Cold Lands - personal website of I.Z.{% endblock %}</title>
-        
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+        {% block customstyles %}
+        <link rel="stylesheet" href="{% static 'css/../static/css/base.css' %}">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        {% endblock %}
     
     </head>
     <body>

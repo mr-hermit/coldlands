@@ -13,7 +13,8 @@ Blog (module)
 Functionality:
 
 	* Articles 
-	* By default articles sorted in order "newest first". This might be different depends on category option and should be 
+	* By default articles sorted in order "newest first". This might be different depends on category option and should
+	    be
 	* Articles that were created since users last visit marks "new" tag (Bootstrap label "default" or "primary" class)
 
 Menu (module)

@@ -10,7 +10,7 @@ class UUIDField(models.CharField):
         models.CharField.__init__(self, *args, **kwargs)
     
     def pre_save(self, model_instance, add):
-        if add :
+        if add:
             value = str(uuid4().hex)
             setattr(model_instance, self.attname, value)
             return value
