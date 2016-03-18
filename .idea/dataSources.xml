@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3135776398">
+    <data-source source="LOCAL" name="PostgreSQL - coldlands@localhost" uuid="6f5c5961-ada1-4401-b3ae-71856dc96a1e">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/coldlands</jdbc-url>
+    </data-source>
+  </component>
+</project>

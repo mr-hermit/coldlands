@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
-    'dogs.apps.DogsConfig',
     'navigation.apps.NavigationConfig',
     'wsglobal.apps.WSGlobalConfig',
     'django.contrib.admin',
@@ -54,6 +53,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'wsglobal.middleware.PageViewsMiddleware',
 ]
 
 ROOT_URLCONF = 'coldlands.urls'
@@ -61,22 +61,23 @@ ROOT_URLCONF = 'coldlands.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'wsglobal/templates')],
-        'APP_DIRS': False,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.core.context_processors.media',
                 'django.core.context_processors.static',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'loaders': [
-                # ('django.template.loaders.cached.Loader', [
-                    'django.template.loaders.filesystem.Loader',
-                    'django.template.loaders.app_directories.Loader',
-                # ]),
-            ],
+            # 'loaders': [
+            #     # ('django.template.loaders.cached.Loader', [
+            #         'django.template.loaders.app_directories.Loader',
+            #         'django.template.loaders.filesystem.Loader',
+            #     # ]),
+            # ],
         },
     },
 ]
@@ -136,7 +137,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'wsglobal/../wsglobal/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'wsglobal/static')]
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'django.contrib.staticfiles.finders.FileSystemFinder',

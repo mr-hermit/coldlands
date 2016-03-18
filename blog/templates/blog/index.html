@@ -1,53 +1,35 @@
 {% extends 'base.html' %}
 
-{% load blogtemptags %}
+{% load staticfiles %}
 
-{% block title %}
-  <div class="blog-header">
-    <h1 class="blog-title">Welcome </h1>
-    <p class="lead blog-description">Here supposed to be some description</p>
-  </div>
+{% load blogtags %}
+
+{% block head_title %}
 {% endblock %}
 
-{% block content %}
-  <div class="row">
-    <!-- Main block -->
-    <div class="col-sm-8 blog-main">
-    
-      {% block posts %}
-      
-        {% if posts %}
-          {% for post in posts %}
+{% block customstyles %}
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}" />
+{% endblock %}
+
+{% block page_content %}
+
+    {% if posts %}
+        {% for post in posts %}
             <div class="blog-post">
-              <h2 class="blog-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-              <p class="blog-post-meta">
-                {{ post.posted }} | <a href="{{ post.category | get_object_url }}">{{ post.category }}</a>
-              </p>        
-              <p>
-              {{ post.text | truncate_until:"%endpreview%" | safe| linebreaks }}
-              </p>
-            </div>   
-          {% endfor %}
-        {% else %}
-          <div class="alert alert-info" role="alert">There are no posts was found.</div>      
-        {% endif %}
-      
-      {% endblock %}
- 
-    </div>
-    
-    <!-- Side bar -->
-    <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-      <div class="sidebar-module sidebar-module-inset">
-        <h4>Title</h4>
-        <p>Content</p>
-      </div>
-      <div class="sidebar-module">
-        <h4>Archives</h4>
-        <ol class="list-unstyled">
-          <li><a href="#">...</a>
-        </ol>
-      </div>
-    </div>
-  </div>
+                <h2 class="blog-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title |title }}</a></h2>
+                <p class="blog-post-meta">
+                        {% if post.is_pass_due %}
+                            <span class="label label-default">new</span>
+                        {% endif %}
+                    {{ post.posted  }}
+                    <!-- TODO: Add list of tags -->
+                </p>
+                <p>
+                    {{ post.text | preview | safe | linebreaks }}
+                </p>
+            </div>
+        {% endfor %}
+    {% endif %}
+
 {% endblock %}
+

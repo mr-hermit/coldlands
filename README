@@ -1,40 +1,25 @@
 
 
+
+
 Requred modules
 ---------------
-
 	* psycopg2
 	* django-bootstrap3
 
 
-Blog (module)
--------------
+Applications
+------------
+* WSGlobal (module) - main module for the web site, provides general models and website index page.
+* Navigation (module) - provides functionality to build Site menu (bar)
 
-Functionality:
 
-	* Articles 
-	* By default articles sorted in order "newest first". This might be different depends on category option and should
-	    be
-	* Articles that were created since users last visit marks "new" tag (Bootstrap label "default" or "primary" class)
 
-Menu (module)
--------------
-Allow to automaticaly build menu
 
-Functionality:
-	*   
-	
-	
-Dogs (module)
--------------
+Content specific
+----------------
 
-Menu Structure (sample for coldlands.org):
-
-	* (top level)
-	|- Malamutes
-	|-- Our Dogs
-	|-- Articles
-	|--- About the breed
-	|--- 
-	
-
+The Ideal length for:
+ * Headline/Title = 6 words
+ * Description = 100 (255) chars
+ * Blog post = 1600 words

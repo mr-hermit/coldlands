@@ -1,6 +1,13 @@
 from django.contrib import admin
-from navigation.models import Menu, SiteNav
+from navigation.models import NavItem, NavItemNested
 
+class NavSubItemInline(admin.TabularInline):
+    model = NavItemNested
+    fk_name = "parent"
 
-admin.site.register(SiteNav)
-admin.site.register(Menu)
+@admin.register(NavItem)
+class NavItemAdmin(admin.ModelAdmin):
+    inlines = [
+        NavSubItemInline
+    ]
+

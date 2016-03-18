@@ -1,37 +1,49 @@
 {% load staticfiles %}
 {% load bootstrap3 %}
-
-{% load navbar %}
+{% load navigationtags %}
 
 {% bootstrap_css %}
 {% bootstrap_javascript jquery=1 %}
 
 <html>
     <head>
-        <title>{% block head_title %}Cold Lands - personal website of I.Z.{% endblock %}</title>
+        <title>{% block head_title %}<!-- -->{% endblock %}</title>
+
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
         {% block customstyles %}
-        <link rel="stylesheet" href="{% static 'css/../static/css/base.css' %}">
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+            <!-- Custom styles-->
         {% endblock %}
-    
     </head>
+
     <body>
-            
-      {% block navigation %}
-        {% navbar %}     
-      {% endblock %}
- 
-      <div class="container">
-        {% block title %}
-          <!-- Page title -->
+
+        {% block navigation %}
+            {% navbar %}
         {% endblock %}
 
-        
-        {% block content %}
-          <!-- Content -->
+        <div class="container page-content">
+
+        {% block page_title %}
+            <!-- Page title -->
+            <div class="page-header">
+{#                <div class="container">#}
+                    <h1>{{ siteinfo.title | safe }}</h1>
+                    <p>{{ siteinfo.desc | safe }}</p>
+                    {% if siteinfo.link %}
+                        <p><a class="btn btn-default btn-sm" href="{{ siteinfo.link }}">Learn more...</a></p>
+                    {% endif %}
+{#                </div>#}
+            </div>
         {% endblock %}
-          
-      </div>
+
+
+
+            <!-- TODO: Add notificatio for EN lang users -->
+
+            {% block page_content %}
+            <!-- Page Content -->
+            {% endblock %}
+        </div>
     </body>
 </html>

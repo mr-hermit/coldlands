@@ -1,8 +1,8 @@
 from django.conf.urls import url
-from . import views
+
+from blog import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^post/(?P<postid>[^\.]+)', views.post, name='post'),
-     url(r'^category/(?P<catid>[^\.]+)', views.category, name='category'),
+    url(r'^post/(?P<post_id>[^\.]+)', views.post, name='post'),
 ]

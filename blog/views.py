@@ -1,22 +1,17 @@
-from django.shortcuts import render_to_response, get_object_or_404
-from blog.models import Post, Category
-
+from django.shortcuts import render, render_to_response
+from django.core.exceptions import ObjectDoesNotExist
+from blog.models import Post
 
 def index(request):
     return render_to_response('blog/index.html', {
-        'categories': Category.objects.all(),
-        'posts': Post.objects.all()
+        'posts': Post.objects.all(),
     })
 
-def post(request, postid):
+def post(request,post_id):
+    try:
+        post = Post.objects.get(post_id=post_id)
+    except ObjectDoesNotExist:
+        post = None
     return render_to_response('blog/post.html', {
-        'post': get_object_or_404(Post, postid=postid)
+        'post': post,
     })
-    
-def category(request, catid):
-    category = get_object_or_404(Category, catid=catid)
-    return render_to_response('blog/filter.html', {
-        'category': category,
-        'posts': Post.objects.filter(category=catid)
-    })
-    

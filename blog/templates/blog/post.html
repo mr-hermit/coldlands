@@ -1,38 +1,22 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
-{% load blogtemptags %}
+{% block page_title %}
+    <div class="page-header">
+         <div class="blog-post">
+            <h2 class="blog-post-title"><b>{{ post.title |title }}</b></h2>
+            <p class="blog-post-meta">
+                {% if post.is_pass_due %}
+                    <span class="label label-default">new</span>
+                {% endif %}
+                {{ post.posted  }}
+                <!-- TODO: Add list of tags -->
+            </p>
+         </div>
+    </div>
+{% endblock %}
 
-<!-- {% block head_title %}{{ post.title }}{% endblock %}  -->
-
-{% block content %}
-  <div class="row">
-    <!-- Main block -->
-    <div class="col-sm-8 blog-main">
-    
-      <!-- Post -->
-      <div class="blog-post">
-        <h2 class="blog-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-        <p class="blog-post-meta">
-          {{ post.posted }} , <a href="{{ post.category | get_object_url }}">{{ post.category }}</a>
-        </p>        
-        <p>
+{% block page_content %}
+    <p>
         {{ post.text | cut:"%endpreview%" | safe | linebreaks }}
-        </p>
-      </div>    
-    </div>
-    
-    <!-- Side bar -->
-    <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-      <div class="sidebar-module sidebar-module-inset">
-        <h4>Title</h4>
-        <p>Content</p>
-      </div>
-      <div class="sidebar-module">
-        <h4>Archives</h4>
-        <ol class="list-unstyled">
-          <li><a href="#">...</a>
-        </ol>
-      </div>
-    </div>
-  </div>
+    </p>
 {% endblock %}

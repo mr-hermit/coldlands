@@ -1,1 +1,35 @@
 @CHARSET "UTF-8";
+
+@font-face {
+    font-family: 'HeadLine';
+    src: url('../fonts/HEADOH__.TTF');
+    /*src: local('../fonts/headoh.ttf');*/
+}
+@font-face {
+    font-family: 'Fail';
+    src: url('../fonts/FAIL____.TTF');
+}
+@font-face {
+    font-family: 'AnuDraw';
+    src: url('../fonts/ANUDRG__.ttf')
+}
+
+@font-face {
+    font-family: "AlmonteSnow";
+    src: url('../fonts/almonte snow.ttf')
+}
+
+@font-face {
+    font-family: "SnowTT";
+    src: url('../fonts/snowtt.ttf')
+}
+
+.brand {
+    font-family: SnowTT;
+    font-size: 150%;
+}
+
+.brand-nav {
+    font-family: SnowTT;
+    font-size: 250%;
+}
