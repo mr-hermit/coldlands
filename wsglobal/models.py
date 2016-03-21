@@ -27,3 +27,8 @@ class HitCount(models.Model):
     class Meta:
         ordering = ('-created','-modified')
         get_latest_by = 'created'
+
+class Message(models.Model):
+    sender_name = models.CharField(max_length=100)
+    sender_email = models.EmailField()
+    content = models.TextField()

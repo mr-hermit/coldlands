@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap3',
+    'bootstrapform',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -99,6 +100,17 @@ DATABASES = {
     }
 }
 
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'ilya.zolotko@yahoo.com'
+EMAIL_HOST_USER = 'ilya.zolotko@gmail.com'
+EMAIL_HOST_PASSWORD = 'north carolina'
+EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False
+# EMAIL_SSL_CERTFILE =
+# EMAIL_SSL_KEYFILE =
+EMAIL_HOST = 'smpt.gmail.com'
+EMAIL_PORT = 587
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

@@ -12,24 +12,57 @@
 {% endblock %}
 
 {% block page_content %}
-
-    {% if posts %}
-        {% for post in posts %}
-            <div class="blog-post">
-                <h2 class="blog-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title |title }}</a></h2>
-                <p class="blog-post-meta">
-                        {% if post.is_pass_due %}
-                            <span class="label label-default">new</span>
-                        {% endif %}
-                    {{ post.posted  }}
-                    <!-- TODO: Add list of tags -->
-                </p>
-                <p>
-                    {{ post.text | preview | safe | linebreaks }}
-                </p>
-            </div>
-        {% endfor %}
+    {% if ctag %}
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong></strong> Blog records filtered by <b>{{ ctag }}</b>
+        </div>
     {% endif %}
+
+    <div class="row">
+
+        <div class="col-sm-8">
+            {% if posts %}
+                {% for post in posts %}
+                    <div class="blog-post">
+                        <h2 class="blog-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title |title }}</a></h2>
+                        <p class="blog-post-meta">
+                                {% if post.is_pass_due %}
+                                    <span class="label label-default">new</span>
+                                {% endif %}
+                            {{ post.posted  }}
+                            <!-- TODO: Add list of tags -->
+                        </p>
+                        <p>
+                            {{ post.text | preview | safe | linebreaks }}
+                        </p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <!-- Tags list -->
+            <div class="sidebar-module">
+                {% for tag in tags %}
+                    {% if tag == ctag %}
+                        <span class="label label-success">{{ tag }}</span>
+                    {% else %}
+                        <a class="label label-default" href="{{ tag.get_url_with_params }}">{{ tag }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <!-- Calendar list -->
+            <div class="sidebar-module">
+                <h4>Archive:</h4>
+                {% for date in dates %}
+                    <a href="">{{ date | date:"F, Y" }}</a>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
 
 {% endblock %}
 

@@ -9,14 +9,20 @@
                     <span class="label label-default">new</span>
                 {% endif %}
                 {{ post.posted  }}
-                <!-- TODO: Add list of tags -->
             </p>
          </div>
     </div>
 {% endblock %}
 
 {% block page_content %}
+    {{ req }}
     <p>
         {{ post.text | cut:"%endpreview%" | safe | linebreaks }}
     </p>
+    <div style="vertical-align: middle; display: table-cell">
+        <span class="glyphicon glyphicon-tag"></span>
+        {% for tag in tags %}
+            <a class="label label-default" href="{{ tag.get_url_with_params }}">{{ tag }}</a>
+        {% endfor %}
+    </div>
 {% endblock %}

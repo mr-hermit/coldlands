@@ -25,12 +25,29 @@ class UUIDField(models.CharField):
             return super(models.CharField, self).pre_save(model_instance,add)
 
 
+class Tag(models.Model):
+    tag = models.CharField(max_length=32, primary_key=True)
+
+    def __unicode__(self):
+        return u"%s" % self.tag
+
+    @permalink
+    def get_absolute_url(self):
+        # return('filter', None, {'tag': str(self.tag)})
+        return('filter', None, None)
+
+    def get_url_with_params(self):
+        qs = 'tags=%s' % self.tag
+        return '?'.join((self.get_absolute_url(),qs))
+
+
 class Post(models.Model):
     post_id = UUIDField(primary_key=True, editable=False)
     title = models.CharField(max_length=255)
     text = models.TextField()
     posted = models.DateField(db_index=True, auto_now_add=True)
     auth = models.BooleanField()
+    tags = models.ManyToManyField(Tag)
 
     def __unicode__(self):
         return u"%s" % self.title
@@ -40,7 +57,7 @@ class Post(models.Model):
         return ('post', None, {'post_id': str(self.post_id)} )
 
     def is_pass_due(self):
-        if self.posted > date.today() - timedelta(7):
+        if self.posted > date.today() - timedelta(2):
             return True
         return False
 

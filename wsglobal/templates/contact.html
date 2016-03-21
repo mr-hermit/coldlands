@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block page_content %}
+    <div class="alert alert-danger">
+    	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    	<strong>Warning</strong> Currently functionality of this form is under development. Sorry for any inconveniece.
+    </div>
+
+    <form role="form" action="" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
