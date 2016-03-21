@@ -7,7 +7,7 @@ from django.template import Context
 
 from wsglobal.forms import ContactsForm
 
-from models import Site,SiteInfo,Message
+from wsglobal.models import Site,SiteInfo,Message
 
 from django.core.exceptions import ObjectDoesNotExist
 
