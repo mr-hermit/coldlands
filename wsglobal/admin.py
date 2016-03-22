@@ -13,6 +13,7 @@ class NavItemInline(admin.StackedInline):
 
 @admin.register(Site)
 class SiteAdmin(admin.ModelAdmin):
+
     inlines = [
         SiteInfoInline,
         NavItemInline,

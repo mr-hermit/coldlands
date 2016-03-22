@@ -10,6 +10,9 @@ class Site(models.Model):
     def __unicode__(self):
         return u"%s" % self.name
 
+    def __str__(self):
+        return self.__unicode__()
+
 class SiteInfo(models.Model):
     site = models.OneToOneField('Site', on_delete=models.CASCADE)
     title = models.CharField(max_length=100, null=False)
@@ -17,6 +20,9 @@ class SiteInfo(models.Model):
 
     def __unicode__(self):
         return u"%s" % self.title
+
+    def __str__(self):
+        return self.__unicode__()
 
 class HitCount(models.Model):
     created = models.DateField(_('Created'),auto_now_add=True,editable=False)

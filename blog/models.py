@@ -31,6 +31,9 @@ class Tag(models.Model):
     def __unicode__(self):
         return u"%s" % self.tag
 
+    def __str__(self):
+        return self.__unicode__()
+
     @permalink
     def get_absolute_url(self):
         # return('filter', None, {'tag': str(self.tag)})
@@ -51,6 +54,9 @@ class Post(models.Model):
 
     def __unicode__(self):
         return u"%s" % self.title
+
+    def __str__(self):
+        return self.__unicode__()
 
     @permalink
     def get_absolute_url(self):
