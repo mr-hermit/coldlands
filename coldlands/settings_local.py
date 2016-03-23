@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'h!tuv!7*j*y)-tmmdhx$*(4d$n1-ee$ch@edv*cqs=-19_sb0%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -101,15 +101,15 @@ DATABASES = {
 
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# DEFAULT_FROM_EMAIL = ''
-# EMAIL_HOST_USER = ''
-# EMAIL_HOST_PASSWORD = ''
-# EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'ilya.zolotko@yahoo.com'
+EMAIL_HOST_USER = 'ilya.zolotko@gmail.com'
+EMAIL_HOST_PASSWORD = 'north carolina'
+EMAIL_USE_TLS = True
 # EMAIL_USE_SSL = False
 # EMAIL_SSL_CERTFILE =
 # EMAIL_SSL_KEYFILE =
-# EMAIL_HOST = ''
-# EMAIL_PORT = 587
+EMAIL_HOST = 'smpt.gmail.com'
+EMAIL_PORT = 587
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
