@@ -12,11 +12,9 @@ import socket
 
 from django.core.wsgi import get_wsgi_application
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "coldlands.settings")
 
-# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "coldlands.settings")
 if socket.gethostname() == 'ws-2227':
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "coldlands.settings")
-else:
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "coldlands.settings_prod")
+    os.environ["DJANGO_SETTINGS_MODULE"] = "coldlands.settings_local"
 
 application = get_wsgi_application()
