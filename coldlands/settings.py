@@ -23,6 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'h!tuv!7*j*y)-tmmdhx$*(4d$n1-ee$ch@edv*cqs=-19_sb0%'
 
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -91,6 +98,7 @@ WSGI_APPLICATION = 'coldlands.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
+        'DATABASE_SCHEMA' : 'cl',
         'NAME': 'coldlands',
         'USER': 'cluser',
         'PASSWORD': 'clpassword',

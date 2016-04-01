@@ -69,3 +69,6 @@ class Post(models.Model):
 
     class Meta:
         ordering=['posted']
+
+#class TestModel(models.Model):
+#    test = models.CharField(max_length=10);
