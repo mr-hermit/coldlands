@@ -3,11 +3,13 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 from blog.models import Post,Tag
 
+from django.db.models import Count
+
 def index(request):
     return render_to_response('blog/index.html', {
-        'posts': Post.objects.all(),
+        'posts': Post.objects.all().order_by('-posted'),
         'tags': Tag.objects.all(),
-        'dates': Post.objects.dates('posted','month').distinct()
+        'dates': Post.objects.all().extra({'posted': "date(posted)"}).values('posted').annotate(num_posts=Count('post_id')).order_by('posted'),
     })
 
 def post(request,post_id):

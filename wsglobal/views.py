@@ -11,6 +11,11 @@ from wsglobal.models import Site,SiteInfo,Message
 
 from django.core.exceptions import ObjectDoesNotExist
 
+
+def cover(request):
+    return render_to_response('cover.html', {})
+
+
 def index(request):
     try:
         siteinfo = SiteInfo.objects.get(site=Site.objects.get(name='ColdLands'))
@@ -20,6 +25,7 @@ def index(request):
     return render_to_response('index.html', {
         'siteinfo': siteinfo,
     })
+
 
 def contacts(reqest):
     form_class = ContactsForm

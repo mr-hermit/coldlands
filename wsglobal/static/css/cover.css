@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+/*Fonts*/
+@font-face {
+    font-family: "SnowTT";
+    src: url('../fonts/snowtt.ttf')
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    text-align: center;
+}
+
+:default {
+    border: #181818;
+}
+
+div {
+    margin: 100px 100px;
+    padding: 100px;
+}
+
+
+

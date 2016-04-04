@@ -25,17 +25,15 @@
         <div class="container page-content">
 
             {% block page_title %}
-                <!-- Page title -->
-                <div class="page-header">
-                    <h1>{{ siteinfo.title | safe }}</h1>
-                    <p>{{ siteinfo.desc | safe }}</p>
-                    {% if siteinfo.link %}
-                        <p><a class="btn btn-default btn-sm" href="{{ siteinfo.link }}">Learn more...</a></p>
-                    {% endif %}
-                </div>
+{#                <!-- Page title -->#}
+{#                <div class="page-header">#}
+{#                    <h1>{{ siteinfo.title | safe }}</h1>#}
+{#                    <p>{{ siteinfo.desc | safe }}</p>#}
+{#                    {% if siteinfo.link %}#}
+{#                        <p><a class="btn btn-default btn-sm" href="{{ siteinfo.link }}">Learn more...</a></p>#}
+{#                    {% endif %}#}
+{#                </div>#}
             {% endblock %}
-
-            <!-- TODO: Add notificatio for EN lang users -->
 
             {% block page_content %}
             <!-- Page Content -->

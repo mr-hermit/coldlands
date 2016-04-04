@@ -58,7 +58,7 @@
             <div class="sidebar-module">
                 <h4>Archive:</h4>
                 {% for date in dates %}
-                    <a href="">{{ date | date:"F, Y" }}</a>
+                    <a >{{ date.posted | date:"F, Y" }} ({{ date.num_posts }})</a>
                 {% endfor %}
             </div>
 
